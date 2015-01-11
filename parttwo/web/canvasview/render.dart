@@ -13,7 +13,7 @@ ResourceManager resourceManager;
 
 // Start Load of images and waits for them to complete.
 LoadImages() {
-  
+
 
   resourceManager = new ResourceManager()
       ..addBitmapData("wall", "img/stone.png")
@@ -34,10 +34,14 @@ void drawStage(CanvasElement ca, PGMap Amap, int tilesize) {
   ca.width = width * tw;
   ca.height = height * tw;
 
-  stage = new Stage(ca, webGL: true, width: 800, height: 600);
+  stage = new Stage(ca, webGL: true, width: ca.width, height: ca.height);
   stage.backgroundColor = Color.Blue;
   stage.scaleMode = StageScaleMode.SHOW_ALL;
   stage.align = StageAlign.NONE;
+
+  var renderLoop = new RenderLoop();
+  renderLoop.addStage(stage);
+
 
   for (int y = 0; y < height; y++) {
     for (int x = 0; x < width; x++) {
@@ -46,11 +50,54 @@ void drawStage(CanvasElement ca, PGMap Amap, int tilesize) {
         BitmapData wallBitmapData = resourceManager.getBitmapData("wall");
         Bitmap wallBitmap = new Bitmap(wallBitmapData);
         Sprite wall = new Sprite();
+        wall.x = x * tw;
+        wall.y = y * tw;
+        wall.addChild(wallBitmap);
+        wall.addTo(stage);
+      } else if (c == WALLCORNER) {
+        BitmapData wallBitmapData = resourceManager.getBitmapData("corner");
+        Bitmap wallBitmap = new Bitmap(wallBitmapData);
+        Sprite wall = new Sprite();
+        wall.x = x * tw;
+        wall.y = y * tw;
+        wall.addChild(wallBitmap);
+        wall.addTo(stage);
+      } else if (c == TREE) {
+        BitmapData wallBitmapData = resourceManager.getBitmapData("grass");
+        Bitmap wallBitmap = new Bitmap(wallBitmapData);
+        Sprite wall = new Sprite();
+        wall.x = x * tw;
+        wall.y = y * tw;
+        wall.addChild(wallBitmap);
+        wall.addTo(stage);
+        BitmapData treeBitmapData = resourceManager.getBitmapData("tree");
+        Bitmap treeBitmap = new Bitmap(wallBitmapData);
+        Sprite tree = new Sprite();
+        tree.x = x * tw;
+        tree.y = (y * tw) - 4;
+        tree.addChild(treeBitmap);
+        tree.addTo(stage);
+      } else if (c == ROOM || c == CORRIDOR) {
+        BitmapData wallBitmapData = resourceManager.getBitmapData("floor");
+        Bitmap wallBitmap = new Bitmap(wallBitmapData);
+        Sprite wall = new Sprite();
+        wall.x = x * tw;
+        wall.y = y * tw;
+        wall.addChild(wallBitmap);
+        wall.addTo(stage);
+      } else {
+        BitmapData wallBitmapData = resourceManager.getBitmapData("grass");
+        Bitmap wallBitmap = new Bitmap(wallBitmapData);
+        Sprite wall = new Sprite();
+        wall.x = x * tw;
+        wall.y = y * tw;
         wall.addChild(wallBitmap);
         wall.addTo(stage);
       }
     }
   }
+
+
 
 }
 

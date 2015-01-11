@@ -2,7 +2,6 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'dart:html';
-import 'dart:async';
 import 'mapgenerator/procedural_generated_map.dart';
 import 'canvasview/render.dart';
 import 'rpggame/rpg.dart';
