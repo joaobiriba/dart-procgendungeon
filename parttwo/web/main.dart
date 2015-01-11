@@ -32,7 +32,7 @@ void main() {
 
   refreshButton = querySelector('#RefreshButton')..onClick.listen(remakeMap);
 
-  Future.wait(LoadImages()).then((_) => makeMap());
+ LoadImages().then((_) => makeMap());
 
 }
 
@@ -50,7 +50,7 @@ void makeMap() {
 
   visualMap = querySelector('#surface');
 
-  drawMap(visualMap, mymap, zoomrange);
+  drawStage(visualMap, mymap, zoomrange);
 }
 
 void remakeMap(e) {makeMap();}
