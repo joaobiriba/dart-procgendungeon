@@ -30,9 +30,10 @@ LoadImages() {
 void drawStage(CanvasElement ca, PGMap Amap, int tilesize) {
   int width = Amap.Width;
   int height = Amap.Height;
-  int tw = tilesize;
+  int tw = 10;
   ca.width = width * tw;
   ca.height = height * tw;
+  print("tilesize $tilesize");
 
   stage = new Stage(ca, webGL: true, width: ca.width, height: ca.height);
   stage.backgroundColor = Color.Blue;
@@ -52,6 +53,8 @@ void drawStage(CanvasElement ca, PGMap Amap, int tilesize) {
         Sprite wall = new Sprite();
         wall.x = x * tw;
         wall.y = y * tw;
+        wall.scaleX = tw;
+        wall.scaleY = tw;
         wall.addChild(wallBitmap);
         wall.addTo(stage);
       } else if (c == WALLCORNER) {
@@ -60,6 +63,9 @@ void drawStage(CanvasElement ca, PGMap Amap, int tilesize) {
         Sprite wall = new Sprite();
         wall.x = x * tw;
         wall.y = y * tw;
+        wall.scaleX = tw;
+        wall.scaleY = tw;
+
         wall.addChild(wallBitmap);
         wall.addTo(stage);
       } else if (c == TREE) {
@@ -68,6 +74,9 @@ void drawStage(CanvasElement ca, PGMap Amap, int tilesize) {
         Sprite wall = new Sprite();
         wall.x = x * tw;
         wall.y = y * tw;
+        wall.scaleX = tw;
+        wall.scaleY = tw;
+
         wall.addChild(wallBitmap);
         wall.addTo(stage);
         BitmapData treeBitmapData = resourceManager.getBitmapData("tree");
@@ -75,6 +84,9 @@ void drawStage(CanvasElement ca, PGMap Amap, int tilesize) {
         Sprite tree = new Sprite();
         tree.x = x * tw;
         tree.y = (y * tw) - 4;
+        tree.scaleX = tw;
+        tree.scaleY = tw;
+
         tree.addChild(treeBitmap);
         tree.addTo(stage);
       } else if (c == ROOM || c == CORRIDOR) {
@@ -83,6 +95,9 @@ void drawStage(CanvasElement ca, PGMap Amap, int tilesize) {
         Sprite wall = new Sprite();
         wall.x = x * tw;
         wall.y = y * tw;
+        wall.scaleX = tw;
+        wall.scaleY = tw;
+
         wall.addChild(wallBitmap);
         wall.addTo(stage);
       } else {
@@ -91,6 +106,9 @@ void drawStage(CanvasElement ca, PGMap Amap, int tilesize) {
         Sprite wall = new Sprite();
         wall.x = x * tw;
         wall.y = y * tw;
+        wall.scaleX = tw;
+        wall.scaleY = tw;
+
         wall.addChild(wallBitmap);
         wall.addTo(stage);
       }
